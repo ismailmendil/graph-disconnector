@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <script src="./articulation_point.js"></script>
+    <script src="./node_modules/cytoscape/dist/cytoscape.js"></script>
+    
+    <title>Graph Deconnector</title>
+</head>
+<body>
+    <h2 class="header">Graph Deconnector</h3>
+    <div class="controls">
+        <div class="control">
+            <button onclick="addNode()">Add a node</button>
+            <!--input id="nodeInput" type="text" placeholder="Node number"-->
+        </div>
+        <div class="control">
+            <button onclick="addEdge()">Add an edge</button>
+            <input id="sourceInput" type="text" placeholder="Source edge ">
+            <input id="targetInput" type="text" placeholder="Target edge ">
+        </div>
+        <div class="control">
+            <button id="validate" onclick="validate()">Validate</button>
+        </div>
+    
+    </div>
+    <div class="wrapper" id="cy">
+      
+    </div>
+    
+    <div id="modal">
+        
+        <div id="content">
+
+            <div id="modal-header">
+               <h2>Warning</h2>
+            </div>
+            <p id="message">
+
+            </p>
+            <button id="ok" onclick="hideModal()">
+                Ok
+            </button>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
