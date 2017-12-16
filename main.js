@@ -43,7 +43,7 @@ var cy = null;
             {
               selector: 'node',
               style: {
-                'background-color': '#666',
+                'background-color': '#000',
                 'label': 'data(id)'
               }
             },
@@ -92,19 +92,23 @@ function addEdge(){
     if (!isNaN(from) && !isNaN(to)){
         if( from >=0 && from < nodes.length && to >= 0 && to < nodes.length){
             if (!containsEdge(from, to)) {
-                cy.add({
-                    data: {
+                //if(form != to){                    
+                    cy.add({
+                        data: {
+                            id: from + '' + to,
+                            source: from + '',
+                            target: to + ''
+                        }
+                    });
+                    edges.push({data: {
                         id: from + '' + to,
                         source: from + '',
                         target: to + ''
-                    }
-                });
-                edges.push({data: {
-                    id: from + '' + to,
-                    source: from + '',
-                    target: to + ''
-                }});
-                nbEdges++;
+                    }});
+                    nbEdges++;
+                //} else {
+                  //  showErrorMessage("Circular E");
+                //}
             } else {
                 //console.log("The edge aleady exists.");
                 showErrorMessage("The edge aleady exists.");
@@ -202,9 +206,9 @@ function validate(){
 
 function colorNodes(points, color){
     points.forEach( elt => {
-        node = cy.$("#" + elt)["0"];
-        
-        
+        node = cy.$("#" + elt)["0"].css({
+            "background-color": "red"
+        });        
     });
 }
 function getIdNodes(){
